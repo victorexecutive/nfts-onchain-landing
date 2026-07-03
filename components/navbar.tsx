@@ -1,17 +1,29 @@
-'use client';
+ 'use client';
 
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Moon, Sun, Sparkles } from 'lucide-react';
 import useTheme from '../hooks/useTheme';
+import CommunityModal from './community-modal';
 
 const navDots = [0, 1, 2];
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function handler() {
+      setOpen(true);
+    }
+    window.addEventListener('openCommunityModal', handler as EventListener);
+    return () => window.removeEventListener('openCommunityModal', handler as EventListener);
+  }, []);
 
   return (
-    <motion.header
+    <>
+      <motion.header
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -19,17 +31,17 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 lg:px-12">
         <div className="flex items-center gap-4">
-          <div className="relative h-12 w-12 overflow-hidden rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-gold/30 via-transparent to-transparent shadow-glow">
-            <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(245,179,1,0.45),_transparent_45%)]" />
-            <div className="absolute inset-0 flex items-center justify-center text-xs font-black uppercase tracking-[0.35em] text-black">NO</div>
+          <div className="flex items-center">
+            <div className="relative flex-shrink-0 rounded-full overflow-hidden border-2 border-[#F5B301] shadow-glow transition-transform duration-300 hover:scale-105" style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.45)' }}>
+              <div className="relative h-[34px] w-[34px] sm:h-[40px] sm:w-[40px] md:h-12 md:w-12">
+                <Image src="/yhxyWdcf_400x400.jpg" alt="NFTs Onchain logo" fill className="object-cover" priority />
+              </div>
+            </div>
           </div>
           <div>
-            <p className="text-sm uppercase tracking-[0.32em] text-brand-gold/90">NFTs Onchain</p>
-            <div className="flex items-center gap-2 text-2xl font-semibold text-brand-light">
+            <p className="text-sm tracking-[0.02em] text-brand-gold/90">NFTs Onchain ◉</p>
+            <div className="flex flex-wrap items-center gap-2 text-2xl font-semibold text-brand-light sm:text-3xl">
               <span>HOME OF ALL NFTs</span>
-              <span className="relative inline-flex h-4 w-4 items-center justify-center rounded-full bg-brand-gold/20 text-brand-gold shadow-glow">
-                ◉
-              </span>
             </div>
           </div>
           <div className="hidden h-8 gap-2 md:flex">
@@ -48,7 +60,7 @@ export default function Navbar() {
           <button className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10">
             Main App Coming Soon
           </button>
-          <button className="rounded-full bg-brand-gold px-5 py-3 text-sm font-semibold text-brand-dark transition hover:brightness-110">
+          <button onClick={() => setOpen(true)} className="rounded-full bg-brand-gold px-5 py-3 text-sm font-semibold text-brand-dark transition hover:brightness-110">
             Join Community
           </button>
           <button
@@ -61,6 +73,8 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-    </motion.header>
+      </motion.header>
+      <CommunityModal open={open} onClose={() => setOpen(false)} />
+    </>
   );
 }

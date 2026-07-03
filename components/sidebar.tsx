@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Music, Youtube, X } from 'lucide-react';
+import { Facebook, Instagram, Music, X, Youtube } from 'lucide-react';
 
 const faqItems = [
   'What is NFTs Onchain?',
@@ -22,8 +22,9 @@ export default function Sidebar() {
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.34em] text-brand-gold/80">About NFTs Onchain</p>
         <p className="text-sm leading-7 text-brand-light/80">
-          NFTs Onchain is a global NFT discovery engine and cultural meeting point across all chains. It is where NFT projects are discovered, NFT cultures are explored, NFT communities connect, and enthusiasts learn and share knowledge.
+          NFTs Onchain is a cross-chain NFT culture and discovery hub where NFT projects, communities, and enthusiasts come together to explore, learn, and connect across all ecosystems.
         </p>
+        <p className="mt-4 text-lg font-semibold uppercase tracking-[0.32em] text-brand-light">HOME OF ALL NFTs</p>
       </div>
 
       <div className="space-y-4">

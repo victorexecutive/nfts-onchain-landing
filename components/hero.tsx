@@ -35,7 +35,10 @@ export default function Hero() {
               Explore Ecosystems
               <ArrowRight size={16} />
             </button>
-            <button className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-4 text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10">
+            <button
+              onClick={() => window.dispatchEvent(new Event('openCommunityModal'))}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-4 text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10"
+            >
               Join Community
             </button>
           </div>

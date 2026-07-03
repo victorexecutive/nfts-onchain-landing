@@ -35,6 +35,11 @@ body.light {
   color: #111111;
 }
 
+/* Smooth transitions when toggling themes to prevent flicker */
+html, body, .theme-transition {
+  transition: background-color 280ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
 body.light .glass-panel {
   background: rgba(255, 255, 255, 0.72);
   color: #111111;
@@ -58,6 +63,8 @@ body.light .shadow-invert {
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.28);
 }
+
+.shadow-glow { box-shadow: 0 10px 40px rgba(245,179,1,0.12), 0 2px 8px rgba(0,0,0,0.45); }
 
 .section-glow {
   position: relative;
