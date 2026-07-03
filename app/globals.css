@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #0A0A0A;
+  color: #FAFAFA;
+  scroll-behavior: smooth;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(245, 179, 1, 0.12), transparent 28%), linear-gradient(180deg, #0A0A0A 0%, #080808 100%);
+  color: #FAFAFA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(245, 179, 1, 0.35);
+  color: #111111;
+}
+
+body.light {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9F6EE 100%);
+  color: #111111;
+}
+
+body.light .glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  color: #111111;
+}
+
+body.light .text-invert {
+  color: #111111;
+}
+
+body.light .border-invert {
+  border-color: rgba(17, 17, 17, 0.08);
+}
+
+body.light .shadow-invert {
+  box-shadow: 0 30px 80px rgba(17, 17, 17, 0.08);
+}
+
+.glass-panel {
+  background: rgba(10, 10, 10, 0.42);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.28);
+}
+
+.section-glow {
+  position: relative;
+}
+
+.section-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top center, rgba(245, 179, 1, 0.14), transparent 30%);
+  opacity: 0.8;
+}
+
+.hero-grid {
+  background-image: radial-gradient(circle at top left, rgba(245, 179, 1, 0.08), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 25%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02));
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.pulse-glow {
+  animation: glowPulse 3.2s ease-in-out infinite;
+}
+
+.blur-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.55;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
