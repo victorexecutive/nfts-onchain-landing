@@ -52,7 +52,7 @@ export default function CommunityModal({ open, onClose }: Props) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.28 }}
-            className="relative z-10 mx-4 max-w-3xl rounded-2xl border border-white/10 bg-black/30 p-6 shadow-2xl backdrop-blur-2xl"
+            className="relative z-10 mx-3 w-full max-w-3xl rounded-t-[40px] rounded-b-3xl border border-white/10 bg-black/30 p-5 shadow-2xl backdrop-blur-2xl sm:mx-4 sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -65,16 +65,16 @@ export default function CommunityModal({ open, onClose }: Props) {
               </button>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex flex-col items-center gap-2 rounded-xl border border-white/6 bg-white/3 p-4 text-center transition hover:scale-105 hover:shadow-glow"
+                  className="group flex flex-col items-center gap-3 rounded-3xl border border-white/6 bg-white/5 p-4 text-center transition hover:scale-[1.02] hover:shadow-glow"
                 >
-                  <div style={{ borderColor: 'rgba(245,179,1,0.12)' }} className="flex h-12 w-12 items-center justify-center rounded-lg bg-black/40 text-brand-gold transition group-hover:brightness-110">
+                  <div style={{ borderColor: 'rgba(245,179,1,0.12)' }} className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black/40 text-brand-gold transition group-hover:brightness-110">
                     <span className="text-sm font-bold" style={{ color: s.color }}>{s.label[0]}</span>
                   </div>
                   <div className="text-sm font-semibold text-brand-light">{s.label}</div>

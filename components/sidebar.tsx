@@ -18,20 +18,20 @@ const socials = [
 
 export default function Sidebar() {
   return (
-    <aside className="sticky top-28 space-y-8 rounded-[40px] border border-white/10 bg-black/25 p-8 shadow-soft backdrop-blur-xl">
+    <aside className="space-y-8 rounded-[40px] border border-white/10 bg-black/25 p-6 shadow-soft backdrop-blur-xl sm:p-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.34em] text-brand-gold/80">About NFTs Onchain</p>
-        <p className="text-sm leading-7 text-brand-light/80">
+        <p className="text-sm leading-7 text-brand-light/80 sm:text-base">
           NFTs Onchain is a cross-chain NFT culture and discovery hub where NFT projects, communities, and enthusiasts come together to explore, learn, and connect across all ecosystems.
         </p>
-        <p className="mt-4 text-lg font-semibold uppercase tracking-[0.32em] text-brand-light">HOME OF ALL NFTs</p>
+        <p className="mt-4 text-base font-semibold uppercase tracking-[0.32em] text-brand-light sm:text-lg">HOME OF ALL NFTs</p>
       </div>
 
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.34em] text-brand-gold/80">FAQ</p>
         <div className="space-y-3 text-sm text-brand-light/80">
           {faqItems.map((item) => (
-            <div key={item} className="rounded-3xl border border-white/10 bg-white/5 p-4 transition hover:border-brand-gold/30 hover:bg-brand-gold/10">
+            <div key={item} className="rounded-3xl border border-white/10 bg-white/5 p-4 transition hover:border-brand-gold/30 hover:bg-brand-gold/10 sm:p-5">
               {item}
             </div>
           ))}
@@ -40,14 +40,14 @@ export default function Sidebar() {
 
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.34em] text-brand-gold/80">Socials</p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
           {socials.map(({ label, href, icon: Icon }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-brand-light transition hover:border-brand-gold/30 hover:bg-brand-gold/10"
+              className="group flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-brand-light transition hover:border-brand-gold/30 hover:bg-brand-gold/10 sm:px-5 sm:py-4"
               aria-label={label}
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-brand-gold transition group-hover:shadow-glow">

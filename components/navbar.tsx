@@ -29,21 +29,21 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: 'easeOut' }}
       className="sticky top-0 z-50 mx-auto w-full border-b border-white/5 bg-black/30 backdrop-blur-3xl"
     >
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 lg:px-12">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center">
-            <div className="relative flex-shrink-0 rounded-full overflow-hidden border-2 border-[#F5B301] shadow-glow transition-transform duration-300 hover:scale-105" style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.45)' }}>
-              <div className="relative h-[34px] w-[34px] sm:h-[40px] sm:w-[40px] md:h-12 md:w-12">
-                <Image src="/yhxyWdcf_400x400.jpg" alt="NFTs Onchain logo" fill className="object-cover" priority />
-              </div>
+      <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-12">
+        <div className="flex flex-1 flex-wrap items-center gap-4">
+          <div className="relative flex-shrink-0 rounded-full overflow-hidden border-2 border-[#F5B301] shadow-glow transition-transform duration-300 hover:scale-105" style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.45)' }}>
+            <div className="relative h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12">
+              <Image src="/yhxyWdcf_400x400.jpg" alt="NFTs Onchain logo" fill className="object-cover" priority />
             </div>
           </div>
-          <div>
-            <p className="text-sm tracking-[0.02em] text-brand-gold/90">NFTs Onchain ◉</p>
-            <div className="flex flex-wrap items-center gap-2 text-2xl font-semibold text-brand-light sm:text-3xl">
+
+          <div className="min-w-0">
+            <p className="text-xs uppercase tracking-[0.22em] text-brand-gold/90 sm:text-sm">NFTs Onchain ◉</p>
+            <div className="flex flex-wrap items-center gap-2 text-2xl font-semibold leading-tight text-brand-light sm:text-3xl md:text-4xl">
               <span>HOME OF ALL NFTs</span>
             </div>
           </div>
+
           <div className="hidden h-8 gap-2 md:flex">
             {navDots.map((index) => (
               <motion.span
@@ -56,11 +56,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button className="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10">
+        <div className="hidden items-center gap-3 md:flex">
+          <button className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10 sm:px-5 sm:text-sm">
             Main App Coming Soon
           </button>
-          <button onClick={() => setOpen(true)} className="rounded-full bg-brand-gold px-5 py-3 text-sm font-semibold text-brand-dark transition hover:brightness-110">
+          <button onClick={() => setOpen(true)} className="rounded-full bg-brand-gold px-4 py-3 text-sm font-semibold text-brand-dark transition hover:brightness-110 sm:px-5">
             Join Community
           </button>
           <button
@@ -72,6 +72,33 @@ export default function Navbar() {
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
+
+        <details className="relative w-full md:hidden">
+          <summary className="inline-flex w-full items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10">
+            <span>Menu</span>
+            <span className="inline-flex h-5 w-5 flex-col items-center justify-between">
+              <span className="block h-[2px] w-5 bg-brand-light" />
+              <span className="block h-[2px] w-5 bg-brand-light" />
+              <span className="block h-[2px] w-5 bg-brand-light" />
+            </span>
+          </summary>
+          <div className="mt-3 space-y-3 rounded-3xl border border-white/10 bg-black/90 p-4 shadow-soft backdrop-blur-2xl">
+            <button className="w-full rounded-full border border-white/10 bg-white/5 px-4 py-3 text-left text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10">
+              Main App Coming Soon
+            </button>
+            <button onClick={() => setOpen(true)} className="w-full rounded-full bg-brand-gold px-4 py-3 text-sm font-semibold text-brand-dark transition hover:brightness-110">
+              Join Community
+            </button>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="w-full rounded-full border border-white/10 bg-white/5 px-4 py-3 text-left text-sm font-semibold text-brand-light transition hover:border-brand-gold/40 hover:bg-brand-gold/10"
+            >
+              {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            </button>
+          </div>
+        </details>
       </div>
       </motion.header>
       <CommunityModal open={open} onClose={() => setOpen(false)} />

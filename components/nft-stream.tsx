@@ -93,52 +93,52 @@ export default function NFTStream({ nfts }: NFTStreamProps) {
         </div>
       </div>
 
-      <div className="rounded-[32px] border border-white/10 bg-black/30 p-4 shadow-soft backdrop-blur-xl">
-        <div ref={containerRef} className="min-h-[420px] overflow-x-auto pb-4">
-          <div className="flex gap-4" style={{ width: `${filteredNFTs.length * 260}px` }}>
-            {visibleNFTs.map((nft) => (
-              <div key={nft.id} className="min-w-[260px] rounded-[28px] border border-white/10 bg-[#070707]/90 p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-brand-gold/40 hover:bg-[#111]/95 hover:shadow-glow">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.32em] text-brand-gold/80">{nft.collection}</p>
-                    <h3 className="mt-2 text-lg font-semibold text-brand-light">{nft.name}</h3>
-                  </div>
-                  <div className="rounded-2xl bg-brand-gold/10 px-3 py-2 text-xs font-semibold text-brand-gold">{nft.category}</div>
+      <div className="rounded-[32px] border border-white/10 bg-black/30 p-4 shadow-soft backdrop-blur-xl sm:p-5">
+        <div ref={containerRef} className="grid min-w-full gap-4 overflow-x-auto pb-4 grid-flow-col auto-cols-[minmax(260px,1fr)] lg:auto-cols-[minmax(260px,1fr)]">
+          {visibleNFTs.map((nft) => (
+            <div key={nft.id} className="min-w-[260px] rounded-[28px] border border-white/10 bg-[#070707]/90 p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-brand-gold/40 hover:bg-[#111]/95 hover:shadow-glow">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm uppercase tracking-[0.32em] text-brand-gold/80">{nft.collection}</p>
+                  <h3 className="mt-2 text-lg font-semibold text-brand-light">{nft.name}</h3>
                 </div>
-                <div className="mt-4 space-y-3 text-sm text-brand-light/70">
-                  <div className="flex items-center justify-between rounded-3xl bg-white/5 px-4 py-3">
-                    <span>Chain</span>
-                    <span>{nft.blockchain}</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-3xl bg-white/5 px-4 py-3">
-                    <span>Marketplace</span>
-                    <span>{nft.marketplace}</span>
-                  </div>
-                </div>
-                <div className="mt-5 flex items-center justify-between gap-3 text-sm font-semibold text-brand-light">
-                  <div className="rounded-3xl bg-white/5 px-4 py-3">
-                    <p className="text-[0.7rem] uppercase tracking-[0.25em] text-brand-gold/80">Floor</p>
-                    <p className="mt-1 text-base">{nft.floorPrice}</p>
-                  </div>
-                  <div className="rounded-3xl bg-white/5 px-4 py-3">
-                    <p className="text-[0.7rem] uppercase tracking-[0.25em] text-brand-gold/80">Volume</p>
-                    <p className="mt-1 text-base">{nft.volume}</p>
-                  </div>
-                </div>
-                <div className="mt-5 flex items-center gap-2 text-sm text-brand-light/70">
-                  <Sparkles size={18} className="text-brand-gold" />
-                  <span className="inline-flex items-center gap-2">
-                    {nft.verified ? (
-                      <CheckCircle size={16} className="text-brand-gold" />
-                    ) : (
-                      <span className="h-3 w-3 rounded-full bg-white/10" />
-                    )}
-                    {nft.verified ? 'Verified listing' : 'Verification pending'}
-                  </span>
+                <div className="rounded-2xl bg-brand-gold/10 px-3 py-2 text-[0.72rem] font-semibold text-brand-gold">
+                  {nft.category}
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="mt-4 space-y-3 text-sm text-brand-light/70">
+                <div className="flex items-center justify-between rounded-3xl bg-white/5 px-4 py-3">
+                  <span>Chain</span>
+                  <span>{nft.blockchain}</span>
+                </div>
+                <div className="flex items-center justify-between rounded-3xl bg-white/5 px-4 py-3">
+                  <span>Marketplace</span>
+                  <span>{nft.marketplace}</span>
+                </div>
+              </div>
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                <div className="rounded-3xl bg-white/5 px-4 py-3">
+                  <p className="text-[0.7rem] uppercase tracking-[0.25em] text-brand-gold/80">Floor</p>
+                  <p className="mt-1 text-base">{nft.floorPrice}</p>
+                </div>
+                <div className="rounded-3xl bg-white/5 px-4 py-3">
+                  <p className="text-[0.7rem] uppercase tracking-[0.25em] text-brand-gold/80">Volume</p>
+                  <p className="mt-1 text-base">{nft.volume}</p>
+                </div>
+              </div>
+              <div className="mt-5 flex flex-wrap items-center gap-2 text-sm text-brand-light/70">
+                <Sparkles size={18} className="text-brand-gold" />
+                <span className="inline-flex items-center gap-2">
+                  {nft.verified ? (
+                    <CheckCircle size={16} className="text-brand-gold" />
+                  ) : (
+                    <span className="h-3 w-3 rounded-full bg-white/10" />
+                  )}
+                  {nft.verified ? 'Verified listing' : 'Verification pending'}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
